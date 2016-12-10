@@ -1,13 +1,9 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-//Load the Plugin language file out of the administration
-$lang = & JFactory::getLanguage();
-$lang->load('plg_hikashop_HikaBackPriceChart', JPATH_ADMINISTRATOR);
 require_once JPATH_PLUGINS .'/hikashop/HikaProPriceChart/jdf.php';
 
-// You need to extend from the hikashopPaymentPlugin class which already define lots of functions in order to simplify your work
-Class plgHikashopHikaBackPriceChart extends JPlugin
+Class plgHikashopHikaProPriceChart extends JPlugin
 {
 
 function onHikashopAfterDisplayView(&$view) {
@@ -24,7 +20,6 @@ function onHikashopAfterDisplayView(&$view) {
 							$variantData[] = $this::prepareDateChart($variant,'hours','variant');
 						}
 
-		
 						for($i = 0 ; $i < count($variantData) ; $i++){
 							$newDate[] = $variantData[$i][0];
 							$newPrice[] = $variantData[$i][1];
@@ -141,11 +136,15 @@ function onHikashopAfterDisplayView(&$view) {
 						}
 						
 					}
-				
+					
 					//====================================== merge array
 					for ($cc = 0 ; $cc < count($mergNData) ; $cc++){
-						if (array_key_exists($cc ,$finalDate ))
-							$finalFinal[$cc] = array_merge_recursive($mergNData[$cc],$finalDate[$cc]);
+						if(isset($finalDate)){
+							if (array_key_exists($cc ,$finalDate ))
+								$finalFinal[$cc] = array_merge_recursive($mergNData[$cc],$finalDate[$cc]);
+							else 
+								$finalFinal[$cc] = $mergNData[$cc]; 
+						}
 						else 
 							$finalFinal[$cc] = $mergNData[$cc];
 					}
@@ -255,7 +254,6 @@ function onHikashopAfterDisplayView(&$view) {
 				else {
 					echo 'هیچ نموداری وجود ندارد';
 				}
-	
 		}
 	}
 			
