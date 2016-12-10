@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2016 at 10:28 AM
+-- Generation Time: Dec 10, 2016 at 02:53 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.21
 
@@ -73,12 +73,12 @@ ALTER TABLE `c6ane_trangel_hikashop_variant`
 -- AUTO_INCREMENT for table `c6ane_trangel_hikashop_product`
 --
 ALTER TABLE `c6ane_trangel_hikashop_product`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1365;
 --
 -- AUTO_INCREMENT for table `c6ane_trangel_hikashop_variant`
 --
 ALTER TABLE `c6ane_trangel_hikashop_variant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

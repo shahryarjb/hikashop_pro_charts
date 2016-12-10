@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" type="plugin" group="hikashop" method="upgrade">
+	<name>HikaProPriceChart</name>
+	<author>Trangell co</author>
+	<creationDate>2016</creationDate>
+	<copyright>(C) 2016 trangell .Co. All rights reserved.</copyright>
+	<license>GPL License</license>
+	<authorEmail>info@trangell.com</authorEmail>
+	<authorUrl>https://trangell.com</authorUrl>
+	<version>0.0.1</version>
+	<description>hikashop Price Pro chart plugin | https://trangell.com</description>
+	<files>
+		<filename plugin="HikaProPriceChart">HikaProPriceChart.php</filename>
+		<filename>index.html</filename>
+		<filename>jquery.slModal.js</filename>
+		<filename>jquery.slModal.css</filename>
+		<filename>jdf.php</filename>
+		<folder>language</folder>
+		<folder>sql</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB.plg_hikashop_HikaProPriceChart.ini</language>
+		<language tag="en-GB">en-GB.plg_hikashop_HikaProPriceChart.sys.ini</language>
+	</languages>    
+    <config>
+		
+	</config>
+	<install>
+        <sql>
+             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+        </install>
+</extension>
