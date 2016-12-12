@@ -7,9 +7,9 @@ Class plgHikashopHikaProPriceChart extends JPlugin
 {
 
 function onHikashopAfterDisplayView(&$view) {
-	JHtml::script('https://github.com/chartjs/Chart.js/releases/download/v2.4.0/Chart.bundle.min.js'); 
-	JHtml::script(JPATH_PLUGINS.'/hikashop/HikaProPriceChart/jquery.slModal.js'); 
-	JHtml::stylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+	 JHtml::script('https://github.com/chartjs/Chart.js/releases/download/v2.4.0/Chart.bundle.min.js'); 
+	 JHtml::script(JPATH_PLUGINS.'/hikashop/HikaProPriceChart/jquery.slModal.js'); 
+	 JHtml::stylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 		JHtml::stylesheet(JPATH_PLUGINS.'/hikashop/HikaProPriceChart/jquery.slModal.css');
 	if (JRequest::getVar('option')==='com_hikashop' AND JRequest::getVar('ctrl')==='product' AND JRequest::getVar('task')==='show') {
 		if($view->getName() == 'product') {
@@ -254,11 +254,17 @@ function onHikashopAfterDisplayView(&$view) {
 				else {
 					echo 'هیچ نموداری وجود ندارد';
 				}
+
+		
 		}
+		
 	}
-			
+		
 	}	
+
+	
 }
+
 //============================================================================================
 //============================================================================================
     function __construct(&$subject, $config){
@@ -266,11 +272,17 @@ function onHikashopAfterDisplayView(&$view) {
 		$this->product = hikashop_get('class.product');
 	}
 	function onAfterProductCreate(&$element) {
-		$this::storeDB($element);
+		$app = JFactory::getApplication();
+		if ($app->isAdmin()){
+			$this::storeDB($element);
+		}
 	}
 
 	function onAfterProductUpdate(&$element) {
-		$this::storeDB($element);
+		$app = JFactory::getApplication();
+		if ($app->isAdmin()){
+			$this::storeDB($element);
+		}
 	}
 
 	function storeDB ($element) {

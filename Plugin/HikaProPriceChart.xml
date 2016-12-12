@@ -15,6 +15,7 @@
 		<filename>jquery.slModal.js</filename>
 		<filename>jquery.slModal.css</filename>
 		<filename>jdf.php</filename>
+		<filename>hikapost.script.php</filename>
 		<folder>language</folder>
 		<folder>sql</folder>
 	</files>
@@ -30,4 +31,6 @@
              <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
         </sql>
         </install>
+        
+     <scriptfile>hikapost.script.php</scriptfile>
 </extension>
