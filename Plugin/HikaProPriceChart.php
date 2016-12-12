@@ -7,9 +7,9 @@ Class plgHikashopHikaProPriceChart extends JPlugin
 {
 
 function onHikashopAfterDisplayView(&$view) {
-	 JHtml::script('https://github.com/chartjs/Chart.js/releases/download/v2.4.0/Chart.bundle.min.js'); 
-	 JHtml::script(JPATH_PLUGINS.'/hikashop/HikaProPriceChart/jquery.slModal.js'); 
-	 JHtml::stylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+	JHtml::script('https://github.com/chartjs/Chart.js/releases/download/v2.4.0/Chart.bundle.min.js'); 
+	JHtml::script(JPATH_PLUGINS.'/hikashop/HikaProPriceChart/jquery.slModal.js'); 
+	JHtml::stylesheet('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
 		JHtml::stylesheet(JPATH_PLUGINS.'/hikashop/HikaProPriceChart/jquery.slModal.css');
 	if (JRequest::getVar('option')==='com_hikashop' AND JRequest::getVar('ctrl')==='product' AND JRequest::getVar('task')==='show') {
 		if($view->getName() == 'product') {
@@ -99,37 +99,37 @@ function onHikashopAfterDisplayView(&$view) {
 								}
 							}
 						}
-						
+
 					//=============================================================		
-					for ($bb = 0 ; $bb < count($addElement) ; $bb++){ // 1
-						if (count ($mergNData[$bb]) <= 2){
-							$Min = min(array_keys($mergNData[$bb])); 
-							$Max = max(array_keys($mergNData[$bb])); 
-							for($ff=0;$ff<count($addElement[$bb]); $ff++){ 
+					foreach($addElement as $key => $value){
+						if (count ($mergNData[$key]) <= 2){
+							$Min = min(array_keys($mergNData[$key])); 
+							$Max = max(array_keys($mergNData[$key])); 
+							for($ff=0;$ff<count($addElement[$key]); $ff++){ 
 							
-								if ($addElement[$bb][$ff] >= $Min && $addElement[$bb][$ff] <= $Max){
-									$finalDate[$bb][$addElement[$bb][$ff]] = $mergNData[$bb][$Min];
+								if ($addElement[$key][$ff] >= $Min && $addElement[$key][$ff] <= $Max){
+									$finalDate[$key][$addElement[$key][$ff]] = $mergNData[$key][$Min];
 								}
-								else if ($addElement[$bb][$ff] >= $Max) {
-									$finalDate[$bb][$addElement[$bb][$ff]] = $mergNData[$bb][$Max];
+								else if ($addElement[$key][$ff] >= $Max) {
+									$finalDate[$key][$addElement[$key][$ff]] = $mergNData[$key][$Max];
 								}
-								else if ($addElement[$bb][$ff] <= $Min) {
-									$finalDate[$bb][$addElement[$bb][$ff]] = $mergNData[$bb][$Min];
+								else if ($addElement[$key][$ff] <= $Min) {
+									$finalDate[$key][$addElement[$key][$ff]] = $mergNData[$key][$Min];
 								}
 							}
 						}
 						else {
-							for($ff=0;$ff<count($addElement[$bb]); $ff++){ // 1
-								$mnData = array_keys($mergNData[$bb]);
+							for($ff=0;$ff<count($addElement[$key]); $ff++){ // 1
+								$mnData = array_keys($mergNData[$key]);
 								foreach ($mnData as $index => $value){ // 4
-									if ($addElement[$bb][$ff] >= $value ){
-										$finalDate[$bb][$addElement[$bb][$ff]] = $mergNData[$bb][$value];
+									if ($addElement[$key][$ff] >= $value ){
+										$finalDate[$key][$addElement[$key][$ff]] = $mergNData[$key][$value];
 									}
-									else if($addElement[$bb][$ff] <= $value && $addElement[$bb][$ff] >= $mergNData[$bb][$mnData[$index-1]]){ 
-										if ($mergNData[$bb][$mnData[$index-1]] != null)
-											$finalDate[$bb][$addElement[$bb][$ff]] = $mergNData[$bb][$mnData[$index-1]];
+									else if($addElement[$key][$ff] <= $value && $addElement[$key][$ff] >= $mergNData[$key][$mnData[$index-1]]){ 
+										if ($mergNData[$key][$mnData[$index-1]] != null)
+											$finalDate[$key][$addElement[$key][$ff]] = $mergNData[$key][$mnData[$index-1]];
 										else
-											$finalDate[$bb][$addElement[$bb][$ff]] = $mergNData[$bb][$mnData[$index]];
+											$finalDate[$key][$addElement[$key][$ff]] = $mergNData[$key][$mnData[$index]];
 									}
 								}
 							}
